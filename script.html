@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정책자금 상담 스크립트 예시 - 성공적인 상담을 위한 가이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            background: #1e3c72;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #2a5298;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* Script Section */
+        .script-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .script-container {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .script-title {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ff6b6b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+            position: relative;
+        }
+
+        .script-content::before {
+            content: '📞';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: white;
+            padding: 0 15px;
+            font-size: 2rem;
+        }
+
+        .script-line {
+            margin-bottom: 15px;
+            padding: 10px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .script-line:hover {
+            background: #f0f4ff;
+            padding-left: 20px;
+        }
+
+        .highlight-text {
+            background: #ffeb3b;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+
+        .response-section {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .response-title {
+            font-size: 1.3rem;
+            color: #856404;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Objection Handling Table */
+        .objection-table {
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+        }
+
+        .objection-table thead {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .objection-table th,
+        .objection-table td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .objection-table tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .objection-table tbody tr:hover {
+            background: #f8f9fa;
+            transform: scale(1.01);
+        }
+
+        .objection-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        /* Message Template */
+        .message-template {
+            background: #e7f3ff;
+            border: 2px solid #007bff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .message-template::before {
+            content: '💬 문자 템플릿';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            color: #007bff;
+            border: 2px solid #007bff;
+        }
+
+        .message-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #ff6b6b;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tip-title {
+            font-size: 1.3rem;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-button-large {
+            background: white;
+            color: #ff6b6b;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Copy Button */
+        .copy-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .copy-button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .copy-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .script-container {
+                padding: 20px;
+            }
+
+            .script-content {
+                padding: 20px;
+            }
+
+            .objection-table th,
+            .objection-table td {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header">
+        <div class="container nav-container">
+            <h2 style="color: #1e3c72;">정책자금 상담 스크립트</h2>
+            <a href="index.html" class="back-button">← 메인으로 돌아가기</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>📞 검증된 정책자금 상담 스크립트</h1>
+            <p>실제 성공률 80% 이상! 바로 사용 가능한 검증된 스크립트</p>
+        </div>
+    </section>
+
+    <!-- Script Section -->
+    <section class="script-section">
+        <div class="container">
+            <!-- Script Version 1 -->
+            <div class="script-container">
+                <h2 class="script-title">
+                    <span>📋</span> 스크립트 예시 1 - 표준형
+                    <button class="copy-button" onclick="copyScript('script1')">복사하기</button>
+                </h2>
+                
+                <div class="script-content" id="script1">
+                    <div class="script-line">안녕하세요 대표님~</div>
+                    <div class="script-line">혹시 <span class="highlight-text">[회사명]</span> 대표님 맞으시죠?</div>
+                    <div class="script-line">제가 <span class="highlight-text">[정책자금 지원센터 or 사명]</span> 쪽에서 연락드렸는데요!</div>
+                    <div class="script-line" style="margin-top: 20px;">요즘 정부 정책자금 지원 많이들 받고 계신데요,</div>
+                    <div class="script-line">대표님 사업장도 지금 최대 <span class="highlight-text">[3천만 원]까지</span> 가능하신 걸로 조회돼서 연락드렸습니다.</div>
+                    <div class="script-line" style="margin-top: 20px;">이건 융자 형식이고요, <span class="highlight-text">최저 [1.5%대] 금리로 2~5년 분할상환</span> 가능하세요.</div>
+                    <div class="script-line">지원금 받는 데에 별도 비용은 없고, 정부가 밀어주는 사업이에요.</div>
+                    <div class="script-line" style="margin-top: 20px;">혹시 작년에 매출 어느 정도 나오셨을까요?</div>
+                    <div class="script-line">그리고 사업장 지역은 <span class="highlight-text">[지역명]</span> 맞으시죠?</div>
+                    <div class="script-line" style="margin-top: 20px;">지금 간단히 확인만 해드려도 되고요,</div>
+                    <div class="script-line">시간 괜찮으시면 오늘 안에 무료 상담 한번 받아보시겠어요?</div>
+                    
+                    <div class="response-section">
+                        <div class="response-title">✅ YES일 경우</div>
+                        <div class="script-line">제가 지금 연결드릴게요! / 아니면 언제 시간 괜찮으세요?</div>
+                    </div>
+                    
+                    <div class="response-section">
+                        <div class="response-title">❌ NO일 경우</div>
+                        <div class="script-line">혹시 문자로 간단히 정보 한번 받아보실래요?</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objection Handling -->
+            <div class="script-container">
+                <h2 class="script-title">
+                    <span>🧊</span> 냉담 응대 대처법
+                </h2>
+                
+                <table class="objection-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40%;">상황</th>
+                            <th style="width: 60%;">대응 멘트</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"나 관심 없어"</td>
+                            <td>"아 네 대표님, 저도 계속 전화드리고 싶진 않아서요~ 가능하신지 확인만 드리고 끊을게요!"</td>
+                        </tr>
+                        <tr>
+                            <td>"정보 어떻게 알았어?"</td>
+                            <td>"대표님, 이건 공공 데이터 기준으로 정식 확인된 사업자 대상으로만 연락드리는 거예요~"</td>
+                        </tr>
+                        <tr>
+                            <td>"사기 아냐?"</td>
+                            <td>"맞아요, 요즘 이상한 전화 많죠 ㅎㅎ 저희는 [기관 or 센터] 소속이고요, 문자로도 정보 남겨드릴게요~"</td>
+                        </tr>
+                        <tr>
+                            <td>"바빠요"</td>
+                            <td>"아 네~ 대표님, 30초만에 확인 끝나요! 바로 끊어드릴게요."</td>
+                        </tr>
+                        <tr>
+                            <td>"필요 없어요"</td>
+                            <td>"넵넵 이해해요~ 그냥 혹시 몰라서 확인만 드린 거예요. 대상자라서요!"</td>
+                        </tr>
+                        <tr>
+                            <td>"대출 싫어요"</td>
+                            <td>"이건 은행 대출이 아니라 정부에서 지정된 정책금융이라, 조건이 완전 달라요!"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Message Template -->
+            <div class="script-container">
+                <div class="message-template">
+                    <div class="message-content" id="message1">[정책자금 무료 확인]  
+대표님, 현재 최대 [3천만 원]까지 정부지원금 대상이십니다.  
+금리 1.5~2% / 2~5년 분할상환  
+✔︎ 간단한 조건 확인만으로도 가능여부 안내드립니다!
+
+👉 무료확인: [홈페이지/지원신청링크]
+
+[담당자: ***]</div>
+                    <button class="copy-button" style="margin-top: 15px;" onclick="copyMessage('message1')">문자 템플릿 복사</button>
+                </div>
+            </div>
+
+            <!-- Script Version 2 -->
+            <div class="script-container">
+                <h2 class="script-title">
+                    <span>📋</span> 스크립트 예시 2 - 친근한 버전
+                    <button class="copy-button" onclick="copyScript('script2')">복사하기</button>
+                </h2>
+                
+                <div class="script-content" id="script2">
+                    <div class="script-line">안녕하세요~</div>
+                    <div class="script-line">대표님 혹시 <span class="highlight-text">[상호명]</span> 맞으실까요?</div>
+                    <div class="script-line" style="margin-top: 20px;">저희 쪽에서 정책자금 지원 도와드리는 쪽인데요,</div>
+                    <div class="script-line">지금 대표님 사업장이 <span class="highlight-text">지원 대상자로 확인돼서</span> 바로 전화드렸어요.</div>
+                    <div class="script-line" style="margin-top: 20px;">이게 뭐 거창한 건 아니고요~</div>
+                    <div class="script-line">정부 쪽에서 <span class="highlight-text">소상공인이나 개인사업자한테 금리 낮은 대출</span> 풀고 있어서,</div>
+                    <div class="script-line">대표님도 <span class="highlight-text">최대 [3천만 원]까지 저금리로 받으실 수 있어요.</span></div>
+                    <div class="script-line" style="margin-top: 20px;">보통 <span class="highlight-text">1.5%~2% 금리</span>, 5년 나눠서 갚는 방식이에요!</div>
+                    <div class="script-line" style="margin-top: 20px;">요즘 경기도 좀 그렇고...</div>
+                    <div class="script-line">사실 이거 되시는 분들은 꼭 챙겨가시더라고요 ㅎㅎ</div>
+                    <div class="script-line" style="margin-top: 20px;">혹시 작년 매출은 대략 어느 정도 나오셨을까요?</div>
+                    <div class="script-line">사업장 지역은 <span class="highlight-text">[서울/경기 등]</span> 쪽 맞으시죠?</div>
+                    <div class="script-line" style="margin-top: 20px;">대표님처럼 <span class="highlight-text">지원 가능한 분한테만</span> 저희가 따로 연락드리는 거라서요~</div>
+                    <div class="script-line">혹시 오늘 중에 간단히 상담 한번 받아보실 수 있을까요?</div>
+                    
+                    <div class="response-section">
+                        <div class="response-title">✅ 긍정 반응 시</div>
+                        <div class="script-line">네~ 그럼 연결 바로 도와드릴게요!</div>
+                    </div>
+                    
+                    <div class="response-section">
+                        <div class="response-title">⏰ 시간 애매하면</div>
+                        <div class="script-line">언제쯤 괜찮으실까요? 시간 맞춰서 드릴게요!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Message Template -->
+            <div class="script-container">
+                <div class="message-template">
+                    <div class="message-content" id="message2">[정책자금 대상 확인 완료]
+
+대표님 사업장, 현재 정책자금 대상자로 조회됐습니다.
+✅ 최대 3,000만원 / 1.5%~ / 2~5년 분할상환
+
+✔︎ 신청비용 無, 정부지원 정식 프로그램입니다.
+
+👉 간단확인 링크: [홈페이지/신청]
+
+도움 필요하시면 연락주세요!</div>
+                    <button class="copy-button" style="margin-top: 15px;" onclick="copyMessage('message2')">문자 템플릿 복사</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.2rem; color: #1e3c72;">💡 상담 성공률을 높이는 꿀팁</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">⏰</div>
+                    <h3 class="tip-title">최적의 통화 시간</h3>
+                    <p>오전 10시~12시, 오후 2시~4시가 가장 연결률이 높습니다. 점심시간과 퇴근 시간은 피하세요.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🎯</div>
+                    <h3 class="tip-title">핵심만 간단히</h3>
+                    <p>30초 안에 핵심 내용을 전달하세요. 길게 설명하면 거부감이 생깁니다.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">😊</div>
+                    <h3 class="tip-title">친근한 톤 유지</h3>
+                    <p>딱딱한 영업 톤보다는 친근하고 편안한 대화체를 사용하세요.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">💪</div>
+                    <h3 class="tip-title">자신감 있게</h3>
+                    <p>정부 지원 프로그램을 안내하는 것이니 자신감 있게 말씀하세요.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">📱</div>
+                    <h3 class="tip-title">문자 후속 조치</h3>
+                    <p>통화 후 반드시 문자를 보내세요. 신뢰도가 크게 상승합니다.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">🔄</div>
+                    <h3 class="tip-title">거절은 당연한 것</h3>
+                    <p>10통 중 2-3통만 성공해도 충분합니다. 거절에 연연하지 마세요.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🎯 검증된 DB로 지금 시작하세요!</h2>
+            <p style="margin-bottom: 30px;">재무제표 100% 보유한 프리미엄 DB로 성공률을 높이세요</p>
+            <a href="index.html#contact" class="cta-button-large">DB 구매하러 가기</a>
+        </div>
+    </section>
+
+    <script>
+        // Copy script function
+        function copyScript(scriptId) {
+            const scriptElement = document.getElementById(scriptId);
+            const scriptLines = scriptElement.querySelectorAll('.script-line');
+            let scriptText = '';
+            
+            scriptLines.forEach(line => {
+                // Remove HTML tags and get text content
+                let text = line.textContent.trim();
+                scriptText += text + '\n';
+            });
+            
+            // Add response sections
+            const responseSections = scriptElement.querySelectorAll('.response-section');
+            responseSections.forEach(section => {
+                const title = section.querySelector('.response-title').textContent;
+                const content = section.querySelector('.script-line').textContent;
+                scriptText += '\n' + title + '\n' + content + '\n';
+            });
+            
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('스크립트가 복사되었습니다!');
+            });
+        }
+
+        // Copy message function
+        function copyMessage(messageId) {
+            const messageElement = document.getElementById(messageId);
+            const messageText = messageElement.textContent;
+            
+            navigator.clipboard.writeText(messageText).then(() => {
+                alert('문자 템플릿이 복사되었습니다!');
+            });
+        }
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.script-container, .tip-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

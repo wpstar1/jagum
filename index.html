@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정책자금 기업 DB - 높은 성사율의 검증된 데이터</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #f8f9fa;
+            color: #333;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background image with blur */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://i.ibb.co/wFHLyvKS/Image-fx-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(1px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.1;
+            }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            color: #1e3c72;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            color: #333;
+        }
+
+        .highlight {
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: rotate(-2deg) scale(1);
+            }
+            25% {
+                transform: rotate(-3deg) scale(1.02);
+            }
+            50% {
+                transform: rotate(-1deg) scale(1.05);
+            }
+            75% {
+                transform: rotate(-2.5deg) scale(1.02);
+            }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #1e3c72;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #2a5298;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2a5298;
+        }
+
+        /* Data Fields Section */
+        .data-fields {
+            background: #1e3c72;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .data-fields h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .fields-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .field-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .field-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Statistics */
+        .stats {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        /* Benefits */
+        .benefits {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #1e3c72;
+        }
+
+        .benefit-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #2a5298;
+            margin-right: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.ibb.co/VrdRYk2/Image-fx-1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            display: block;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Form Styles */
+        #sampleForm {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        #sampleForm>div:last-of-type {
+            grid-column: span 2;
+        }
+
+        #sampleForm button[type="submit"] {
+            grid-column: span 2;
+        }
+
+        #sampleForm input[type="text"],
+        #sampleForm select,
+        #sampleForm textarea {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: #333 !important;
+        }
+
+        #sampleForm input[type="text"]:focus,
+        #sampleForm select:focus,
+        #sampleForm textarea:focus {
+            outline: none;
+            border-color: white !important;
+            background: white !important;
+        }
+
+        #sampleForm button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #sampleForm select option {
+            background: white;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            #sampleForm {
+                grid-template-columns: 1fr;
+            }
+
+            #sampleForm>div:last-of-type,
+            #sampleForm button[type="submit"] {
+                grid-column: span 1;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .features h2,
+            .benefits h2,
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="highlight">💥 반값 DB! 메타광고 비용의 50%!</div>
+            <h1>재무제표 없는 막DB는 이제 그만!<br>진짜 정책자금 DB의 격이 다릅니다!</h1>
+            <p>재무제표 100% 보유 · 정책자금 승인율 80% 이상 · 28개 핵심 데이터 필드</p>
+            
+            <!-- Price Hook -->
+            <div style="margin: 35px 0; position: relative; z-index: 2;">
+                <div style="background: #ffeb3b; 
+                            color: #d32f2f; 
+                            padding: 25px 50px; 
+                            border-radius: 15px; 
+                            display: inline-block; 
+                            font-size: 2.2rem; 
+                            font-weight: 900;
+                            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+                            transform: rotate(-2deg);
+                            border: 4px solid #d32f2f;
+                            animation: shake 2s ease-in-out infinite;">
+                    💸 개당 단돈 6,000원부터! 💸
+                    <span style="font-size: 1.3rem; display: block; margin-top: 8px; font-weight: 700; transform: rotate(1deg);">
+                        🎯 1000개 구매시 최대 60% 할인! 미친가격!
+                    </span>
+                </div>
+            </div>
+            
+            <button class="cta-button" onclick="scrollToContact()">지금 문의하기</button>
+            
+            <div style="margin-top: 20px; position: relative; z-index: 10; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <button onclick="window.location.href='calculator.html'" 
+                        style="background: #2a5298; 
+                               color: white; 
+                               padding: 12px 30px; 
+                               border: none;
+                               border-radius: 50px; 
+                               font-weight: 600; 
+                               cursor: pointer;
+                               font-size: 1.1rem;
+                               transition: all 0.3s ease;
+                               box-shadow: 0 4px 15px rgba(42, 82, 152, 0.3);"
+                        onmouseover="this.style.background='#1e3c72'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(42, 82, 152, 0.4)'"
+                        onmouseout="this.style.background='#2a5298'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(42, 82, 152, 0.3)'">
+                    💰 수익 계산기 & 성공 사례 보기
+                </button>
+                
+                <button onclick="window.location.href='script.html'" 
+                        style="background: #4caf50; 
+                               color: white; 
+                               padding: 12px 30px; 
+                               border: none;
+                               border-radius: 50px; 
+                               font-weight: 600; 
+                               cursor: pointer;
+                               font-size: 1.1rem;
+                               transition: all 0.3s ease;
+                               box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);"
+                        onmouseover="this.style.background='#388e3c'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(76, 175, 80, 0.4)'"
+                        onmouseout="this.style.background='#4caf50'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(76, 175, 80, 0.3)'">
+                    📞 상담 스크립트 예시 보기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>남들과 차원이 다른 프리미엄 정책자금 DB</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>재무제표 100% 보유</h3>
+                    <p>정확한 재무상태 분석 가능한 완벽한 데이터</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>출처 명확한 검증된 기업정보</h3>
+                    <p>출처불명 신용등급이 아닌 확실한 정보만 제공</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>정책자금 승인율 80% 이상 보장</h3>
+                    <p>승인 가능성 80% 이상만 선별한 유니크 DB</p>
+                </div>
+            </div>
+
+            <div
+                style="background: #fff3cd; border: 2px solid #ff6b6b; border-radius: 15px; padding: 30px; margin: 40px 0; text-align: center;">
+                <h3 style="color: #ff6b6b; font-size: 1.8rem; margin-bottom: 20px;">시중에 돌아다니는 허접한 DB들</h3>
+                <p style="font-size: 1.2rem; color: #666; line-height: 1.8;">
+                    • 네이버폼, 구글폼으로 대충 모은 DB<br>
+                    • 재무제표도 없는 이름만 있는 DB<br>
+                    • 승인될지 안될지 모르는 도박성 DB<br>
+                    • 메타광고로 무작정 긁어모은 DB<br>
+                    • 이런 디비들은 절대로 취급하지 않습니다
+                </p>
+            </div>
+
+            <!-- Sample Image Section with Modal -->
+            <div style="text-align: center; margin-top: 60px;">
+                <h3 style="font-size: 2rem; color: #ff6b6b; margin-bottom: 30px;">📊 28개 핵심 데이터 필드로 완벽 분석 가능!</h3>
+
+                <!-- Additional Image Above -->
+                <div style="margin-bottom: 30px;">
+                    <img src="https://i.ibb.co/svDRZTK8/K-002.png" alt="정책자금 DB 샘플 미리보기"
+                        style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                </div>
+
+                <div onclick="openModal()"
+                    style="background: #f8f9fa; border: 2px solid #007bff; border-radius: 10px; padding: 20px; cursor: pointer; transition: all 0.3s ease; display: inline-block; max-width: 800px;"
+                    onmouseover="this.style.background='#e7f3ff'; this.style.transform='scale(1.02)'; this.style.boxShadow='0 5px 15px rgba(0,123,255,0.3)'"
+                    onmouseout="this.style.background='#f8f9fa'; this.style.transform='scale(1)'; this.style.boxShadow='none'">
+                    <strong style="font-size: 1.5rem;">실제 DB 샘플 예시</strong>
+                    <span style="color: #007bff; font-size: 1rem;">(👈 클릭하면 28개 전체 필드 보기)</span>
+                    <div style="margin-top: 15px;">
+                        <img src="https://i.ibb.co/svDRZTK8/K-002.png" alt="정책자금 DB 샘플"
+                            style="max-width: 100%; height: auto; border-radius: 10px;">
+                    </div>
+                    <span
+                        style="color: #ff6b6b; font-weight: bold; display: block; margin-top: 15px; font-size: 1.2rem;">
+                        📋 클릭해서 28개 핵심 필드 전체보기
+                    </span>
+                </div>
+            </div>
+
+            <!-- Modal for full view -->
+            <div id="dbModal"
+                style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8);"
+                onclick="closeModal()">
+                <div style="background-color: #fefefe; margin: 5% auto; padding: 30px; border-radius: 15px; width: 90%; max-width: 1000px; max-height: 80vh; overflow-y: auto; position: relative;"
+                    onclick="event.stopPropagation()">
+                    <span onclick="closeModal()"
+                        style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+                    <h2 style="color: #ff6b6b; margin-bottom: 20px;">📊 28개 핵심 데이터 필드 전체보기</h2>
+                    <img src="https://i.ibb.co/svDRZTK8/K-002.png" alt="정책자금 DB 샘플 전체보기"
+                        style="width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
+                    <div
+                        style="background: #fff3cd; border: 2px dashed #ff6b6b; border-radius: 10px; padding: 20px; margin-top: 20px;">
+                        <strong style="font-size: 1.3rem; color: #ff6b6b;">🔥 남들과 차원이 다른 28개 필드 🔥</strong><br><br>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; text-align: left;">
+                            <div>1. 기업명</div>
+                            <div>2. 대표자명</div>
+                            <div>3. 설립일</div>
+                            <div>4. 업종</div>
+                            <div>5. 매출액</div>
+                            <div>6. 영업이익</div>
+                            <div>7. 당기순이익</div>
+                            <div>8. 자산총계</div>
+                            <div>9. 부채비율</div>
+                            <div>10. 유동비율</div>
+                            <div>11. 신용등급</div>
+                            <div>12. 기술인증</div>
+                            <div>13. 특허보유</div>
+                            <div>14. 수출실적</div>
+                            <div>15. 고용인원</div>
+                            <div>16. 4대보험</div>
+                            <div>17. 정책자금 수혜이력</div>
+                            <div>18. 담보여력</div>
+                            <div>19. R&D 투자비율</div>
+                            <div>20. 주요거래처</div>
+                            <div>21. ISO 인증</div>
+                            <div>22. 정부과제 수행</div>
+                            <div>23. 수상경력</div>
+                            <div>24. 신용카드 매출</div>
+                            <div>25. 임차보증금</div>
+                            <div>26. 운전자금 회전율</div>
+                            <div>27. 재고자산 회전율</div>
+                            <div>28. 산업단지 입주여부</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Fields Section -->
+    <section class="data-fields">
+        <div class="container">
+            <h2>28개 핵심 데이터 필드</h2>
+            <div class="fields-container">
+                <div class="field-item">기업형태</div>
+                <div class="field-item">업태</div>
+                <div class="field-item">업체명</div>
+                <div class="field-item">설립년월</div>
+                <div class="field-item">사업자등록번호</div>
+                <div class="field-item">대표자</div>
+                <div class="field-item">휴대폰번호</div>
+                <div class="field-item">주소</div>
+                <div class="field-item">종업원수</div>
+                <div class="field-item">재무제표기준</div>
+                <div class="field-item">매출액(백만)</div>
+                <div class="field-item">영업이익(백만)</div>
+                <div class="field-item">자본금(백만)</div>
+                <div class="field-item">당기순이익(백만)</div>
+                <div class="field-item">이익잉여금(천원)</div>
+                <div class="field-item">장기차입금(천원)</div>
+                <div class="field-item">비유동부채(천원)</div>
+                <div class="field-item">부채총계(백만)</div>
+                <div class="field-item">벤처</div>
+                <div class="field-item">연구개발전담부서</div>
+                <div class="field-item">부설연구소</div>
+                <div class="field-item">메인비즈</div>
+                <div class="field-item">이노비즈</div>
+                <div class="field-item">특허</div>
+                <div class="field-item">실용신안</div>
+                <div class="field-item">디자인</div>
+                <div class="field-item">상표권</div>
+                <div class="field-item">기업등급</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>28개</h3>
+                    <p>핵심 데이터 필드</p>
+                </div>
+                <div class="stat-item">
+                    <h3>80%+</h3>
+                    <p>정책자금 승인율</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50%</h3>
+                    <p>메타광고 대비 비용</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>재무제표 보유율</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <h2>🎯 이런 분들께 필수입니다</h2>
+
+            <div
+                style="background: #ff6b6b; color: white; padding: 25px; border-radius: 15px; margin-bottom: 40px; text-align: center;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">⚠️ 정책자금 수강생 필독!</h3>
+                <p style="font-size: 1.3rem;">"처음부터 안 되는 DB로 시간과 돈 낭비하지 마세요!"</p>
+            </div>
+
+            <div class="benefit-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>정책자금 컨설팅 신규 수강생</h3>
+                        <p>처음부터 검증된 DB로 시작해 성공률을 높이세요</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>기존 컨설턴트 중 DB 품질에 실망하신 분</h3>
+                        <p>재무제표 있는 진짜 DB로 갈아타세요</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>광고비 태우며 막DB 모으는데 지치신 분</h3>
+                        <p>메타광고 대비 50% 비용으로 고품질 DB 확보</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>승인율 높은 검증된 DB로 시작하고 싶은 분</h3>
+                        <p>높은 승인율의 유니크 DB 제공</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>재무제표 없는 깡통 DB에 시간낭비 중인 분</h3>
+                        <p>28개 핵심 필드로 완벽한 분석 가능</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>정책자금 승인 성공률을 높이고 싶은 분</h3>
+                        <p>검증된 데이터로 승인 가능성 사전 파악</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>DB 구매비용을 절감하고 싶은 분</h3>
+                        <p>메타광고 비용의 절반으로 더 좋은 DB 확보</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>타겟 마케팅으로 효율을 극대화하려는 분</h3>
+                        <p>정확한 기업정보로 맞춤형 접근 가능</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>메타/네이버 광고로 질 낮은 DB 수집 중인 분</h3>
+                        <p>광고비 절약하고 검증된 DB 구매하세요</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>정책자금 교육 받고 DB 때문에 막막한 분</h3>
+                        <p>교육 내용 바로 적용 가능한 실전 DB 제공</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>고객사 만족도를 높이고 싶은 컨설턴트</h3>
+                        <p>정확한 데이터로 신뢰도 상승</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>안정적인 DB 공급처를 찾는 에이전시</h3>
+                        <p>지속적이고 안정적인 고품질 DB 공급</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                style="background: #e7f3ff; border: 2px solid #007bff; border-radius: 15px; padding: 25px; margin-top: 40px; text-align: center;">
+                <h3 style="color: #007bff; font-size: 1.6rem; margin-bottom: 15px;">💡 DB 판매업자님도 주목!</h3>
+                <p style="font-size: 1.2rem; color: #333;">"비싼 메타 돌려서 뽑지 마시고, 검증된 메이드 DB를 구입하세요!"<br>
+                    <strong>가격은 반값입니다!</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>지금 바로 시작하세요!</h2>
+            <p>정책자금 성사율을 높이는 검증된 기업 DB</p>
+
+            <!-- Pricing Info -->
+            <div
+                style="background: rgba(255,255,255,0.3); padding: 30px; border-radius: 15px; margin-bottom: 40px; max-width: 800px; margin: 0 auto 40px;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">💰 가격 정보</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                        <thead>
+                            <tr style="background: rgba(255,255,255,0.2);">
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">개수</th>
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">가격</th>
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">1개당 가격</th>
+                                <th style="padding: 12px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">할인율</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">30개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">450,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">15,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">0% (기준가)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">50개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">650,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">13,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻13.3%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">100개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">1,000,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">10,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻33.3%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">200개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">1,800,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">9,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻40%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">300개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">2,400,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">8,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻46.6%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">400개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">3,000,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">7,500원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻50%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">500개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">3,500,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">7,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center;">🔻53.3%</td>
+                            </tr>
+                            <tr style="background: rgba(255,215,0,0.2);">
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center; font-weight: bold;">1000개</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center; font-weight: bold;">6,000,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center; font-weight: bold;">6,000원</td>
+                                <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.3); text-align: center; font-weight: bold;">🔻60% 👍최대할인!!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">✅ 업자들 환영</p>
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">✅ DB는 인증된 업체에서 구입하세요</p>
+                <p style="font-size: 1.2rem; font-weight: 600;">📊 정책자금, 보험 관련 DB 전문</p>
+            </div>
+
+            <!-- Application Form -->
+            <div class="contact-info" style="max-width: 800px; width: 100%; margin: 0 auto;">
+                <h3>📋 구입 & 샘플문의</h3>
+                <form id="sampleForm" style="text-align: left; margin-top: 20px;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600;">구매 수량 * (기본: 30개)</label>
+                        <select id="quantity" name="quantity" required style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.3); 
+                                       border-radius: 8px; background: rgba(255,255,255,0.1); 
+                                       color: white; font-size: 16px;" onchange="updatePriceInfo()">
+                            <option value="30" selected>30개 - 450,000원 (15,000원/개)</option>
+                            <option value="50">50개 - 650,000원 (13,000원/개) 🔻13.3% 할인</option>
+                            <option value="100">100개 - 1,000,000원 (10,000원/개) 🔻33.3% 할인</option>
+                            <option value="200">200개 - 1,800,000원 (9,000원/개) 🔻40% 할인</option>
+                            <option value="300">300개 - 2,400,000원 (8,000원/개) 🔻46.6% 할인</option>
+                            <option value="400">400개 - 3,000,000원 (7,500원/개) 🔻50% 할인</option>
+                            <option value="500">500개 - 3,500,000원 (7,000원/개) 🔻53.3% 할인</option>
+                            <option value="1000">1000개 - 6,000,000원 (6,000원/개) 🔻60% 최대할인!! 👍</option>
+                        </select>
+                        
+                        <!-- Price Display -->
+                        <div id="priceDisplay" style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); 
+                                                     border-radius: 8px; border: 2px solid rgba(255,215,0,0.5);">
+                            <div style="font-size: 1.2rem; margin-bottom: 10px;">
+                                <strong>선택하신 수량:</strong> <span id="selectedQuantity" style="color: #ffd700;">30개</span>
+                            </div>
+                            <div style="font-size: 1.3rem; font-weight: bold; color: #ffd700;">
+                                <strong>총 금액:</strong> <span id="totalPrice">450,000원</span>
+                            </div>
+                            <div style="font-size: 1rem; margin-top: 5px;">
+                                <strong>개당 가격:</strong> <span id="unitPrice">15,000원</span>
+                                <span id="discountRate" style="color: #ff6b6b; margin-left: 10px;">(기준가)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600;">연락 방법 선택 *</label>
+                        <select id="contactType" name="contactType" required style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.3); 
+                                       border-radius: 8px; background: rgba(255,255,255,0.1); 
+                                       color: white; font-size: 16px;" onchange="updateContactPlaceholder()">
+                            <option value="">선택하세요</option>
+                            <option value="phone">전화번호</option>
+                            <option value="kakao">카카오톡 아이디</option>
+                            <option value="telegram">텔레그램 아이디</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600;">연락처 *</label>
+                        <input type="text" id="contactInfo" name="contactInfo" required style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.3); 
+                                      border-radius: 8px; background: rgba(255,255,255,0.1); 
+                                      color: white; font-size: 16px;" placeholder="연락 방법을 먼저 선택하세요">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600;">문의사항 (선택)</label>
+                        <textarea id="message" name="message" rows="3" style="width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.3); 
+                                         border-radius: 8px; background: rgba(255,255,255,0.1); 
+                                         color: white; font-size: 16px; resize: vertical;"
+                            placeholder="궁금한 점이 있으시면 남겨주세요"></textarea>
+                    </div>
+
+                    <button type="submit" style="width: 100%; padding: 15px; background: white; color: #ff6b6b; 
+                                   border: none; border-radius: 8px; font-size: 18px; 
+                                   font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                        구입 & 샘플 문의하기
+                    </button>
+                </form>
+
+                <div id="successMessage" style="display: none; margin-top: 20px; padding: 20px; 
+                                                background: rgba(40, 167, 69, 0.2); border: 2px solid #28a745; 
+                                                border-radius: 8px; text-align: center;">
+                    <h4 style="color: #28a745; margin-bottom: 10px;">✅ 신청이 완료되었습니다!</h4>
+                    <p>빠른 시일 내에 연락드리겠습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openModal() {
+            document.getElementById('dbModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('dbModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Update contact placeholder based on selection
+        function updateContactPlaceholder() {
+            const contactType = document.getElementById('contactType').value;
+            const contactInfo = document.getElementById('contactInfo');
+
+            switch (contactType) {
+                case 'phone':
+                    contactInfo.placeholder = '010-0000-0000';
+                    break;
+                case 'kakao':
+                    contactInfo.placeholder = '카카오톡 아이디를 입력하세요';
+                    break;
+                case 'telegram':
+                    contactInfo.placeholder = '텔레그램 아이디를 입력하세요';
+                    break;
+                default:
+                    contactInfo.placeholder = '연락 방법을 먼저 선택하세요';
+            }
+        }
+
+        // Update price information based on selected quantity
+        function updatePriceInfo() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            // Price data
+            const priceData = {
+                30: { total: 450000, unit: 15000, discount: '(기준가)', discountColor: '#ffd700' },
+                50: { total: 650000, unit: 13000, discount: '🔻13.3% 할인', discountColor: '#ff6b6b' },
+                100: { total: 1000000, unit: 10000, discount: '🔻33.3% 할인', discountColor: '#ff6b6b' },
+                200: { total: 1800000, unit: 9000, discount: '🔻40% 할인', discountColor: '#ff6b6b' },
+                300: { total: 2400000, unit: 8000, discount: '🔻46.6% 할인', discountColor: '#ff6b6b' },
+                400: { total: 3000000, unit: 7500, discount: '🔻50% 할인', discountColor: '#ff6b6b' },
+                500: { total: 3500000, unit: 7000, discount: '🔻53.3% 할인', discountColor: '#ff6b6b' },
+                1000: { total: 6000000, unit: 6000, discount: '🔻60% 최대할인!! 👍', discountColor: '#ff6b6b' }
+            };
+
+            const data = priceData[quantity];
+            
+            // Update display elements
+            document.getElementById('selectedQuantity').textContent = quantity + '개';
+            document.getElementById('totalPrice').textContent = data.total.toLocaleString() + '원';
+            document.getElementById('unitPrice').textContent = data.unit.toLocaleString() + '원';
+            document.getElementById('discountRate').textContent = data.discount;
+            document.getElementById('discountRate').style.color = data.discountColor;
+            
+            // Highlight max discount
+            const priceDisplay = document.getElementById('priceDisplay');
+            if (quantity === 1000) {
+                priceDisplay.style.borderColor = 'rgba(255,215,0,0.8)';
+                priceDisplay.style.background = 'rgba(255,215,0,0.1)';
+            } else {
+                priceDisplay.style.borderColor = 'rgba(255,215,0,0.5)';
+                priceDisplay.style.background = 'rgba(255,255,255,0.1)';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('sampleForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const contactType = document.getElementById('contactType').value;
+            const contactInfo = document.getElementById('contactInfo').value;
+            const message = document.getElementById('message').value;
+
+            // Get price data
+            const priceData = {
+                30: { total: 450000, unit: 15000, discount: '0%' },
+                50: { total: 650000, unit: 13000, discount: '13.3%' },
+                100: { total: 1000000, unit: 10000, discount: '33.3%' },
+                200: { total: 1800000, unit: 9000, discount: '40%' },
+                300: { total: 2400000, unit: 8000, discount: '46.6%' },
+                400: { total: 3000000, unit: 7500, discount: '50%' },
+                500: { total: 3500000, unit: 7000, discount: '53.3%' },
+                1000: { total: 6000000, unit: 6000, discount: '60%' }
+            };
+
+            const selectedPrice = priceData[quantity];
+
+            // Format contact type in Korean
+            const contactTypeKorean = {
+                'phone': '전화번호',
+                'kakao': '카카오톡',
+                'telegram': '텔레그램'
+            };
+
+            // Create message for Telegram
+            const telegramMessage = `💰 정책자금 DB 구입 & 샘플 문의\n\n` +
+                `📊 구매 수량: ${quantity}개\n` +
+                `💵 총 금액: ${selectedPrice.total.toLocaleString()}원\n` +
+                `💸 개당 가격: ${selectedPrice.unit.toLocaleString()}원\n` +
+                `🎯 할인율: ${selectedPrice.discount}\n` +
+                `━━━━━━━━━━━━━━━━━━\n` +
+                `📱 연락방법: ${contactTypeKorean[contactType]}\n` +
+                `📞 연락처: ${contactInfo}\n` +
+                `💬 문의사항: ${message || '없음'}\n\n` +
+                `📅 문의시간: ${new Date().toLocaleString('ko-KR')}`;
+
+            // Telegram API settings
+            const TELEGRAM_BOT_TOKEN = '8451496724:AAEvCri9zFnGDVnfg58Q15Ir0EQ866nomW0';
+            const TELEGRAM_CHAT_ID = '455532741';
+            const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+            try {
+                // Send to Telegram
+                const response = await fetch(TELEGRAM_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: telegramMessage,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('sampleForm').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+
+                    // Reset form after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('sampleForm').reset();
+                        document.getElementById('sampleForm').style.display = 'block';
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert('신청 중 오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('신청 중 오류가 발생했습니다. 다시 시도해주세요.');
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.feature-card, .benefit-item, .stat-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
