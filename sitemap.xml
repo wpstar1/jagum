@@ -12,10 +12,4 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://jagum.vercel.app/admin-stats.html</loc>
-        <lastmod>2025-01-08</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.3</priority>
-    </url>
 </urlset>
