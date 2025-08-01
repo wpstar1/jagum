@@ -2,6 +2,7 @@
   "name": "jagum-visitor-stats",
   "version": "1.0.0",
   "description": "정책자금 DB 방문자 통계 시스템",
+  "type": "module",
   "scripts": {
     "dev": "vercel dev",
     "build": "echo 'No build needed'"
