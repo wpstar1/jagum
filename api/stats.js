@@ -1,4 +1,19 @@
-// Vercel API Route - 방문자 통계
+// Vercel API Route - 실제 방문자 통계 (MongoDB)
+import { MongoClient } from 'mongodb';
+
+let cachedClient = null;
+
+async function connectToDatabase() {
+    if (cachedClient) {
+        return cachedClient;
+    }
+
+    const client = new MongoClient(process.env.MONGODB_URI);
+    await client.connect();
+    cachedClient = client;
+    return client;
+}
+
 export default async function handler(req, res) {
     // CORS 헤더 설정
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -11,25 +26,50 @@ export default async function handler(req, res) {
     }
 
     try {
+        const client = await connectToDatabase();
+        const db = client.db('jagum_stats');
+        const collection = db.collection('visitors');
+
         // 현재 날짜
         const today = new Date().toISOString().split('T')[0];
         const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
-        // 임시 데이터 (실제로는 데이터베이스나 외부 저장소 사용)
-        const mockStats = {
-            [today]: {
-                unique: Math.floor(Math.random() * 50) + 10,
-                total: Math.floor(Math.random() * 100) + 20
-            },
-            [yesterday]: {
-                unique: Math.floor(Math.random() * 45) + 8,
-                total: Math.floor(Math.random() * 90) + 15
+        // 오늘 통계
+        const todayStats = await collection.aggregate([
+            { $match: { date: today } },
+            {
+                $group: {
+                    _id: null,
+                    unique: { $sum: 1 },
+                    total: { $sum: '$visitCount' }
+                }
             }
-        };
+        ]).toArray();
+
+        // 어제 통계
+        const yesterdayStats = await collection.aggregate([
+            { $match: { date: yesterday } },
+            {
+                $group: {
+                    _id: null,
+                    unique: { $sum: 1 },
+                    total: { $sum: '$visitCount' }
+                }
+            }
+        ]).toArray();
+
+        const todayData = todayStats[0] || { unique: 0, total: 0 };
+        const yesterdayData = yesterdayStats[0] || { unique: 0, total: 0 };
 
         res.status(200).json({
-            today: mockStats[today],
-            yesterday: mockStats[yesterday]
+            today: {
+                unique: todayData.unique,
+                total: todayData.total
+            },
+            yesterday: {
+                unique: yesterdayData.unique,
+                total: yesterdayData.total
+            }
         });
 
     } catch (error) {

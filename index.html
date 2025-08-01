@@ -6,17 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정책자금 DB | 정부지원금 데이터베이스 - 승인율 80% 보장</title>
     
-    <!-- 방문자 통계 추적 -->
+    <!-- 방문자 통계 추적 (MongoDB) -->
     <script>
         // 페이지 로드시 방문 기록
         window.addEventListener('load', function() {
-            // PHP 서버가 있는 경우
-            if (window.location.protocol !== 'file:') {
-                fetch('visitor-stats.php')
-                    .then(response => response.text())
-                    .then(data => console.log('방문 기록됨'))
-                    .catch(error => console.error('방문 기록 실패:', error));
-            }
+            // 방문자 추적 API 호출
+            fetch('/api/track-visitor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    page: window.location.pathname,
+                    timestamp: new Date().toISOString()
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log('방문 기록됨:', data.isNewVisitor ? '신규 방문자' : '재방문자');
+                }
+            })
+            .catch(error => console.error('방문 기록 실패:', error));
         });
     </script>
     
